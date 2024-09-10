@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <>페이지</>
+    <h1>ONEBITE CINEMA</h1>
   );
 }

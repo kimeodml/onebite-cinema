@@ -1,0 +1,22 @@
+.container {
+  max-width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 20px;
+  color: white;
+}
+
+.header {
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.header > a {
+  color: red;
+  text-decoration: none;
+}
+
+.main {
+  padding-top: 10px;
+}

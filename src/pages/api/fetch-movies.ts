@@ -1,9 +1,11 @@
 import { MovieData } from '@/types';
 
-export default async function fetchOneMovie(
-  id: number,
-): Promise<MovieData | null> {
-  const url = `http://localhost:12345/movie/${id}`;
+export default async function fetchMovies(q?: string): Promise<MovieData[]> {
+  let url = `https://onebite-cinema-api-red.vercel.app/movie`;
+
+  if (q) {
+    url += `/search?q=${q}`;
+  }
 
   try {
     const response = await fetch(url);
@@ -14,6 +16,6 @@ export default async function fetchOneMovie(
     return await response.json();
   } catch (err) {
     console.log(err);
-    return null;
+    return [];
   }
 }

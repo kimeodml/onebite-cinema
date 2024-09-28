@@ -1,3 +1,7 @@
+import movies from '@/mock/movies.json';
+import style from '@/app/(with-searchbar)/search/Search.module.css';
+import MovieItem from '@/components/MovieItem';
+
 export default function Page({
   searchParams,
 }: {
@@ -5,5 +9,11 @@ export default function Page({
     q: string;
   };
 }) {
-  return <div>Search : {searchParams.q} </div>;
+  return (
+    <div className={style.searchList}>
+      {movies.map((movie) => (
+        <MovieItem key={movie.id} {...movie} />
+      ))}
+    </div>
+  );
 }

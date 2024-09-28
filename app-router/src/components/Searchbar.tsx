@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import style from '@/components/Searchbar.module.css';
 
 export default function SearchBar() {
   const searchParams = useSearchParams();
@@ -29,7 +30,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
+    <div className={style.searchbar}>
       <input
         value={search}
         onChange={onChangeSearch}

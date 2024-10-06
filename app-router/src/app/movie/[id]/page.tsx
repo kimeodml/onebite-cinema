@@ -1,5 +1,7 @@
 import style from '@/app/movie/[id]/id.module.css';
-import { MovieData } from '@/types';
+import ReviewEditor from '@/components/ReviewEditor';
+import ReviewItem from '@/components/ReviewItem';
+import { MovieData, ReviewData } from '@/types';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -23,15 +25,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({
-  params,
-}: {
-  params: {
-    id: string | string[];
-  };
-}) {
+async function MovieDetail({ movieId }: { movieId: string }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${params.id}`,
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${movieId}`,
     {
       cache: 'force-cache',
     },
@@ -59,7 +55,7 @@ export default async function Page({
   } = movie;
 
   return (
-    <div className={style.container}>
+    <section>
       <div
         className={style.posterImgUrl}
         style={{ backgroundImage: `url('${posterImgUrl}') ` }}
@@ -73,6 +69,41 @@ export default async function Page({
       <div>{company}</div>
       <div className={style.subTitle}>{subTitle}</div>
       <div className={style.description}>{description}</div>
+    </section>
+  );
+}
+
+async function ReviewList({ movieId }: { movieId: string }) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${movieId}`,
+  );
+
+  if (!response.ok)
+    throw new Error(`Review fetch failed: ${response.statusText}`);
+
+  const reviews: ReviewData[] = await response.json();
+
+  return (
+    <section>
+      {reviews.map((review) => (
+        <ReviewItem key={`review-item-${review.id}`} {...review} />
+      ))}
+    </section>
+  );
+}
+
+export default function Page({
+  params,
+}: {
+  params: {
+    id: string;
+  };
+}) {
+  return (
+    <div className={style.container}>
+      <MovieDetail movieId={params.id} />
+      <ReviewEditor movieId={params.id} />
+      <ReviewList movieId={params.id} />
     </div>
   );
 }

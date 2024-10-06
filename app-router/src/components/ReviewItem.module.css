@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(50, 50, 50);
+}
+
+.container_top {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.container_top > span:nth-child(2) {
+  font-weight: normal;
+  font-size: 14px;
+  color: rgb(94, 94, 94);
+}
+
+.button {
+  display: flex;
+  align-items: flex-end;
+  border: none;
+  border-bottom: 1px solid rgb(121, 121, 121);
+  padding: 0;
+  background-color: transparent;
+  color: rgb(121, 121, 121);
+  width: 90px;
+}
+
+.button > svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}

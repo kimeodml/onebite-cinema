@@ -29,7 +29,13 @@
   color: white;
 }
 
-.button {
+.button,
+.button:disabled {
   padding: 0 10px;
   font-weight: bold;
+  width: 75px;
+  background-color: white;
+  color: black;
+  border: none;
+  box-sizing: border-box;
 }

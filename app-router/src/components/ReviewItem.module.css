@@ -19,20 +19,3 @@
   font-size: 14px;
   color: rgb(94, 94, 94);
 }
-
-.button {
-  display: flex;
-  align-items: flex-end;
-  border: none;
-  border-bottom: 1px solid rgb(121, 121, 121);
-  padding: 0;
-  background-color: transparent;
-  color: rgb(121, 121, 121);
-  width: 90px;
-}
-
-.button > svg {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-}

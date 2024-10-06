@@ -1,0 +1,13 @@
+.button {
+  display: flex;
+  color: rgb(121, 121, 121);
+  border-bottom: 1px solid rgb(121, 121, 121);
+  width: fit-content;
+  cursor: pointer;
+}
+
+.button > svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}

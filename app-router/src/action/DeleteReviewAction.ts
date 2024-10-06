@@ -3,25 +3,23 @@
 import { delay } from '@/util/delay';
 import { revalidateTag } from 'next/cache';
 
-export default async function CreateReviewAction(_: any, formData: FormData) {
-  const author = formData.get('author')?.toString();
-  const content = formData.get('content')?.toString();
+export default async function DeleteReviewAction(_: any, formData: FormData) {
+  const reviewId = formData.get('reviewId')?.toString();
   const movieId = formData.get('movieId')?.toString();
 
-  if (!author || !content || !movieId) {
+  if (!reviewId) {
     return {
       status: false,
-      error: '리뷰 내용, 작성자를 입력해야 합니다.',
+      error: '삭제할 리뷰가 없습니다.',
     };
   }
 
   try {
     await delay(1500);
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review`,
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/${reviewId}`,
       {
-        method: 'POST',
-        body: JSON.stringify({ movieId, content, author }),
+        method: 'DELETE',
       },
     );
 
@@ -38,7 +36,7 @@ export default async function CreateReviewAction(_: any, formData: FormData) {
   } catch (error) {
     return {
       status: false,
-      error: `리뷰 저장에 실패했습니다. : ${error}`,
+      error: `리뷰 삭제에 실패했습니다. : ${error}`,
     };
   }
 }

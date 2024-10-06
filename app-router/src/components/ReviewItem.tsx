@@ -1,6 +1,6 @@
 import { ReviewData } from '@/types';
-import TrashIcon from '@/assets/svg/trash.svg';
 import style from '@/components/ReviewItem.module.css';
+import ReviewItemDeleteButton from './ReviewItemDeleteButton';
 
 export default function ReviewItem({
   id,
@@ -16,10 +16,7 @@ export default function ReviewItem({
         <span>{`${new Date(createdAt).toLocaleDateString()}일 작성됨`}</span>
       </div>
       <div>{content}</div>
-      <button type="button" className={style.button}>
-        <TrashIcon />
-        리뷰 삭제하기
-      </button>
+      <ReviewItemDeleteButton reviewId={id} movieId={movieId} />
     </div>
   );
 }

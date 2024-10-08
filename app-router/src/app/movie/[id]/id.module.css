@@ -8,17 +8,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: white;
 }
 
 .posterImgUrl {
   display: flex;
   justify-content: center;
   padding: 20px;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   position: relative;
 }
 

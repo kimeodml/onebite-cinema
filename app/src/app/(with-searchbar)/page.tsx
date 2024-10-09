@@ -5,6 +5,17 @@ import MovieItemSkeleton from '@/components/skeleton/MovieItemSkeleton';
 import { Suspense } from 'react';
 import { delay } from '@/util/delay';
 import MovieListSkeleton from '@/components/skeleton/MovieListSkeleton';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '한입 씨네마',
+  description: '한입 영화에 등록된 영화를 만사보세요',
+  openGraph: {
+    title: '한입 씨네마',
+    description: '한입 씨네마에 등록된 영화를 만사보세요',
+    images: ['/thumbnail.png'],
+  },
+};
 
 async function AllMovies() {
   await delay(1500);

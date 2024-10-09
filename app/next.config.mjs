@@ -5,6 +5,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  images: {
+    domains: ['media.themoviedb.org'],
+  },
   webpack: (config) => {
     // SVG 파일 처리 설정
     config.module.rules.push({

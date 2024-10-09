@@ -1,7 +1,7 @@
 'use client';
 
 import { createPortal } from 'react-dom';
-import style from './modal.module.css';
+import style from './ModalComponent.module.css';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 

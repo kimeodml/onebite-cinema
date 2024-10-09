@@ -33,8 +33,8 @@
 
 .posterImgUrl > img {
   z-index: 1;
-  max-height: 350px;
-  height: 100%;
+  /* max-height: 350px;
+  height: 100%; */
 }
 
 .title {

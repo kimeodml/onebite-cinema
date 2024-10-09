@@ -4,9 +4,28 @@ import MovieItemSkeleton from '@/components/skeleton/MovieItemSkeleton';
 import MovieListSkeleton from '@/components/skeleton/MovieListSkeleton';
 import { MovieData } from '@/types';
 import { delay } from '@/util/delay';
+import { Metadata } from 'next';
 import { Suspense } from 'react';
 
-export async function SearchResult({ q }: { q: string }) {
+export function generateMetadata({
+  searchParams,
+}: {
+  searchParams: {
+    q: string;
+  };
+}): Metadata {
+  return {
+    title: `한입 시네마 검색 : ${searchParams.q}`,
+    description: `${searchParams.q}의 검색 결과입니다.`,
+    openGraph: {
+      title: `한입 시네마 검색 : ${searchParams.q}`,
+      description: `${searchParams.q}의 검색 결과입니다.`,
+      images: ['/thumbnail.png'],
+    },
+  };
+}
+
+async function SearchResult({ q }: { q: string }) {
   await delay(1500);
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`,

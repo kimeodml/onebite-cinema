@@ -1,9 +1,7 @@
 import style from '@/app/(with-searchbar)/search/Search.module.css';
 import MovieItem from '@/components/MovieItem';
-import MovieItemSkeleton from '@/components/skeleton/MovieItemSkeleton';
 import MovieListSkeleton from '@/components/skeleton/MovieListSkeleton';
 import { MovieData } from '@/types';
-import { delay } from '@/util/delay';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
@@ -26,7 +24,6 @@ export function generateMetadata({
 }
 
 async function SearchResult({ q }: { q: string }) {
-  await delay(1500);
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`,
     {

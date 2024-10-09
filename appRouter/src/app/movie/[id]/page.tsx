@@ -35,26 +35,23 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`,
-    {
-      cache: 'force-cache',
-    },
-  );
+// export async function generateStaticParams() {
+//   const response = await fetch(
+//     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`,
+//   );
 
-  if (!response.ok) {
-    // 빌드 중단을 위한 에러 던지기
-    // JSX는 정적 데이터가 아님 따라서 div 태그를 사용 불가
-    throw new Error('에러 발생');
-  }
+//   if (!response.ok) {
+//     // 빌드 중단을 위한 에러 던지기
+//     // JSX는 정적 데이터가 아님 따라서 div 태그를 사용 불가
+//     throw new Error(response.statusText);
+//   }
 
-  const movies: MovieData[] = await response.json();
+//   const movies: MovieData[] = await response.json();
 
-  return movies.map((movie) => ({
-    id: String(movie.id),
-  }));
-}
+//   return movies.map(({ id }) => ({
+//     id: id.toString(),
+//   }));
+// }
 
 async function MovieDetail({ movieId }: { movieId: string }) {
   const response = await fetch(
